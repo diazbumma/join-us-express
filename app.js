@@ -1,8 +1,10 @@
 let express = require('express');
 let app = express();
 let mysql = require('mysql');
+let parser = require('body-parser');
 
 app.set("view engine", "ejs");
+app.use(parser.urlencoded({extended: true}));
 
 let connection = mysql.createConnection({
     host    : 'localhost',
@@ -24,6 +26,21 @@ app.get("/", function(req, res) {
         res.render("home", {
             total    : count
         });
+    });
+});
+
+app.post("/register", function(req, res){
+    console.log("Requested to register route: " + req.body.email);
+
+    let email = []
+    email.push([req.body.email]);
+
+    let q = "INSERT INTO users (email) VALUES ?"
+    connection.query(q, [email], function(error, results) {
+        if (error) throw error;
+        //console.log(results);
+        //res.send("Thanks for joining us!");
+        res.redirect("/");
     });
 });
 

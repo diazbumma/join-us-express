@@ -1,0 +1,19 @@
+{
+  "name": "join_us",
+  "version": "1.0.0",
+  "description": "Simple join us web app using express js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diazbumma/join-us-express.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diazbumma/join-us-express/issues"
+  },
+  "homepage": "https://github.com/diazbumma/join-us-express#readme"
+}

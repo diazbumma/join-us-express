@@ -5,6 +5,7 @@ let parser = require('body-parser');
 
 app.set("view engine", "ejs");
 app.use(parser.urlencoded({extended: true}));
+app.use(express.static(__dirname + "/public"));
 
 let connection = mysql.createConnection({
     host    : 'localhost',
@@ -35,7 +36,7 @@ app.post("/register", function(req, res){
     let email = []
     email.push([req.body.email]);
 
-    let q = "INSERT INTO users (email) VALUES ?"
+    let q = "INSERT INTO users (email) VALUES ?";
     connection.query(q, [email], function(error, results) {
         if (error) throw error;
         //console.log(results);
